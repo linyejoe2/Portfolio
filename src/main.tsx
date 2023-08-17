@@ -14,6 +14,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <ThemeProvider theme={Theme.darkMode}>
       <CssBaseline />
       <TopNavigationBar />
+      <Box sx={{ height: '70px' }} />
       <MyApp />
       <Box
         bgcolor={purple}

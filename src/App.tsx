@@ -17,7 +17,7 @@ export default function MyApp() {
       <Grid container spacing={2}>
         <Grid xs={12} md={7} sx={{ paddingLeft: "62px", paddingTop: '80px', '@media (max-width: 900px)': { padding: "30px", paddingRight: "0" } }}>
           <h1>Hi There!</h1>
-          <h1>I'M <HiLighter>Randy Lin</HiLighter> </h1>
+          <h1>I'm <HiLighter>Randy Lin</HiLighter> </h1>
           <h1 >A <HiLighter><TypeWriter /></HiLighter></h1>
         </Grid>
         <Grid xs={12} md={5}>
@@ -47,16 +47,16 @@ export default function MyApp() {
         <Grid xs={12} md={12}>
           <Box sx={{ display: 'flex', justifyContent: "center" }}>
             <Stack direction="row" spacing={1}>
-              <Fab size="small" color="info" href='https://github.com/linyejoe2' aria-label="go to My Github" title='My Github'>
+              <Fab size="small" color="info" href='https://github.com/linyejoe2' aria-label="go to My Github" target='github' title='My Github'>
                 <img src={Github} height={25} width={25} />
               </Fab>
               <Fab size="small" color="info" href='mailto:linyejoe2@gmail.com' aria-label="contact me with email" title='My Email'>
                 <img src={Email} height={25} width={25} />
               </Fab>
-              <Fab size="small" color="info" href='https://www.linkedin.com/in/randy-lin/' aria-label="go to My LinkedIn" title='My LinkedIn'>
+              <Fab size="small" color="info" href='https://www.linkedin.com/in/randy-lin/' aria-label="go to My LinkedIn" target='linkedin' title='My LinkedIn'>
                 <img src={LinkedIn} height={25} width={25} />
               </Fab>
-              <Fab size="small" color="info" href='https://linyejoe2.github.io/' aria-label="go to My Blog" title='My Blog'>
+              <Fab size="small" color="info" href='https://linyejoe2.github.io/' aria-label="go to My Blog" target='blog' title='My Blog'>
                 <img src={LogoMat} height={25} width={25} />
               </Fab>
             </Stack>

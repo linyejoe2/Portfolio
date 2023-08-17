@@ -12,14 +12,14 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { useScrollTrigger } from '@mui/material';
 
-const pages = ['Products', 'Pricing', 'Blog'];
+const pages = ['Home', 'About', 'Projects', 'Resume', 'Blogs'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 interface Props {
   children: React.ReactElement;
 }
 
-export default function TopNavigationBar(props: Props) {
+export default function TopNavigationBar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
@@ -37,10 +37,8 @@ export default function TopNavigationBar(props: Props) {
     setAnchorElUser(null);
   };
 
-
-
   return (
-    <ElevationScroll {...props}>
+    <ElevationScroll>
       <AppBar component="nav">
         <Container maxWidth="lg">
           <Toolbar>
@@ -51,7 +49,8 @@ export default function TopNavigationBar(props: Props) {
               href="/"
               sx={{
                 mr: 2,
-                display: { xs: 'none', md: 'flex' },
+                // display: { xs: 'none', md: 'flex' },
+                display: 'flex',
                 fontWeight: 700,
                 letterSpacing: '.1rem',
                 color: 'inherit',
@@ -60,7 +59,12 @@ export default function TopNavigationBar(props: Props) {
             >
               Randy Lin
             </Typography>
-            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+            <Box sx={{
+              flexGrow: 1,
+              display: { xs: 'none', md: 'flex' },
+              justifyContent: "flex-end",
+              marginRight: { xs: '20px', md: '40px' }
+            }}>
               {pages.map((page, i) => (
                 <Button
                   key={page}
@@ -146,15 +150,12 @@ function ElevationScroll(props: Props) {
         backdropFilter: 'blur(5px)',
         backgroundImage: "none",
         backgroundColor: 'rgba(255, 255, 255, .15)',
-
       } : {
         boxShadow: 'none',
         backgroundImage: "none",
         backgroundColor: 'rgba(0, 0, 0, 0)'
       }),
       transition: '1s all'
-    },
-    // className: trigger ? 'not-at-top' : "at-top"
-    // elevation: trigger ? 99 : 0,
+    }
   });
 }
