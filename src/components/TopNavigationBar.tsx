@@ -65,7 +65,7 @@ export default function TopNavigationBar() {
               justifyContent: "flex-end",
               marginRight: { xs: '20px', md: '40px' }
             }}>
-              {pages.map((page, i) => (
+              {pages.map((page) => (
                 <Button
                   key={page}
                   onClick={handleOpenNavMenu}
