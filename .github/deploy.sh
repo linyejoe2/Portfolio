@@ -14,7 +14,7 @@ chmod 600 ~/.ssh/id_rsa
 ssh-keyscan github.com >> ~/.ssh/known_hosts
 
 # 設定 git 相關資訊
-msg='來自 GitHub Actions 的自動部署。'
+msg='Automated deployment from GitHub Actions.'
 githubUrl=git@github.com:linyejoe2/Portfolio.git
 git config --global user.name "linyejoe2"
 git config --global user.email "linyejoe2@gmail.com"
