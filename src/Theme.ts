@@ -34,6 +34,14 @@ export default class {
         primary: "#fff",
         secondary: "#ba68c8"
       },
+      primary: purple,
+      secondary: deepPurple,
+      info: {
+        main: "#e872e6"
+      },
+      background: {
+        default: "#0e021d"
+      }
       // primary: {
       //   dark: '#6d1b7b',
       //   main: '#9c27b0',
@@ -46,8 +54,6 @@ export default class {
       //   dark: '#ba000d',
       //   contrastText: '#000',
       // },
-      primary: purple,
-      secondary: deepPurple,
     },
     typography: {
       // fontFamily: [
