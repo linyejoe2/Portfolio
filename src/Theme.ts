@@ -1,5 +1,5 @@
 import { createTheme } from '@mui/material/styles'
-import { purple, deepPurple, yellow } from '@mui/material/colors';
+import { purple, deepPurple } from '@mui/material/colors';
 import CubicTTF from '/font/Cubic_11_1.010_R.ttf'
 import RainyHeartsTTF from '/font/rainyhearts.ttf'
 // import { CSSObject } from '@mui/material/styles';

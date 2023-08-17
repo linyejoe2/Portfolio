@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 import HomeMain from '/img/exam/home-main.svg'
 import avatar from '/img/avatar.jpg'
 import Github from '/img/github.svg'
@@ -7,11 +5,8 @@ import Email from '/img/email.svg'
 import LinkedIn from '/img/linkedIn.svg'
 import LogoMat from '/img/logo-mat.svg'
 
-import Button from '@mui/material/Button';
-import { Box, Container, Fab, Icon, Stack, SvgIcon, colors } from '@mui/material';
+import { Box, Container, Fab, Stack } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
-import { red } from '@mui/material/colors';
-import Theme from './Theme'
 import { TypeWriter } from './components/helper/TypeWriter';
 import { HiLighter } from './components/helper/HiLighter';
 

@@ -1,5 +1,5 @@
 import './style.css'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom/client'
 import ThemeProvider from '@mui/material/styles/ThemeProvider'
 import { Box, CssBaseline } from '@mui/material'
