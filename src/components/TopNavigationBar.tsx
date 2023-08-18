@@ -39,7 +39,7 @@ export default function TopNavigationBar() {
 
   return (
     <ElevationScroll>
-      <AppBar component="nav">
+      <AppBar component="nav" >
         <Container maxWidth="lg">
           <Toolbar>
             <Typography
@@ -155,7 +155,10 @@ function ElevationScroll(props: Props) {
         backgroundImage: "none",
         backgroundColor: 'rgba(0, 0, 0, 0)'
       }),
-      transition: '1s all'
+      // transition: 'all 1s',
+      // transition: 'background-color 1s',
+      transition: 'background-color 1s, box-shadow 1s, backdrop-filter 1s',
+      marginLeft: 'calc(100vw - 100%)'
     }
   });
 }

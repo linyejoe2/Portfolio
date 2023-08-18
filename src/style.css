@@ -2,13 +2,15 @@
   display: inline;
 }
 
-.at-top {
-  box-shadow: none !important;
-  background-image: none !important;
-  background-color: rgba(0, 0, 0, 0) !important;
+::-webkit-scrollbar-thumb {
+  background: rgba(178, 121, 216, .959);
+  border-radius: 12px;
 }
 
-.not-at-top {
-  backdrop-filter: blur(5px) !important;
-  background-color: rgba(0, 0, 0, .25) !important;
+::-webkit-scrollbar-track {
+  background: #2d1950;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
 }
