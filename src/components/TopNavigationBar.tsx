@@ -11,8 +11,8 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { useScrollTrigger } from '@mui/material';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Theme from '../Theme';
+import store, { themeActions } from '../service/store';
+import Theme from '../theme';
 
 
 const pages = ['Home', 'About', 'Projects', 'Resume', 'Blogs'];
@@ -25,6 +25,14 @@ interface Props {
 export default function TopNavigationBar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+
+  const handleNavClick = (event: React.MouseEvent<HTMLElement>) => {
+    const pageName = event.currentTarget.id
+    if (pages.indexOf(pageName) == -1) return
+    // if (pageName == 'Home') {}
+    if (pageName == 'About') { store.dispatch(themeActions.setTheme("dark")) }
+    if (pageName == 'Projects') { store.dispatch(themeActions.setTheme("light")) }
+  }
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -70,9 +78,10 @@ export default function TopNavigationBar() {
             }}>
               {pages.map((page) => (
                 <Button
+                  id={page}
                   key={page}
-                  onClick={handleOpenNavMenu}
-                  sx={{ my: 2, color: Theme.darkMode.palette.text.primary, display: 'block' }}
+                  onClick={handleNavClick}
+                  sx={{ my: 2, color: Theme().palette.text.secondary, display: 'block' }}
                 >
                   <span>
                     {page}
@@ -114,7 +123,8 @@ export default function TopNavigationBar() {
             }}>
               <Tooltip title="Open settings">
                 <IconButton size="large" onClick={handleOpenUserMenu}>
-                  <svg fill={Theme.darkMode.palette.text.primary} xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" /></svg>
+                  {/* <svg fill={Theme.darkMode.palette.text.primary} xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" /></svg> */}
+                  <svg fill={Theme().palette.text.primary} xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" /></svg>
                 </IconButton>
               </Tooltip>
               <Menu

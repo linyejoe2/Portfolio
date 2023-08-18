@@ -18,7 +18,10 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    /* 引用大小寫問題 */
+    "forceConsistentCasingInFileNames": false
   },
   "include": ["src", "archive"],
   "references": [{ "path": "./tsconfig.node.json" }]

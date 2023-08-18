@@ -5,13 +5,13 @@ import ThemeProvider from '@mui/material/styles/ThemeProvider'
 import { Box, CssBaseline } from '@mui/material'
 
 import MyApp from './App'
-import Theme from './Theme'
+import Theme from './theme'
 import { purple } from '@mui/material/colors'
 import TopNavigationBar from './components/TopNavigationBar'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ThemeProvider theme={Theme.darkMode}>
+    <ThemeProvider theme={Theme()}>
       <CssBaseline />
       <TopNavigationBar />
       <Box sx={{ height: '70px' }} />

@@ -1,6 +1,6 @@
 import React from "react";
 import { FC } from "react";
-import Theme from "../../Theme";
+import Theme from "../../theme";
 
 interface p {
   children: React.ReactNode
@@ -8,7 +8,7 @@ interface p {
 
 export const HiLighter: FC<p> = (props: p) => {
   return (
-    <span style={{ color: Theme.darkMode.palette.text.secondary }}>
+    <span style={{ color: Theme().palette.text.secondary }}>
       {props.children}
     </span>
   )
