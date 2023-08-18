@@ -11,6 +11,9 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { useScrollTrigger } from '@mui/material';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Theme from '../Theme';
+
 
 const pages = ['Home', 'About', 'Projects', 'Resume', 'Blogs'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -69,9 +72,11 @@ export default function TopNavigationBar() {
                 <Button
                   key={page}
                   onClick={handleOpenNavMenu}
-                  sx={{ my: 2, color: 'white', display: 'block' }}
+                  sx={{ my: 2, color: Theme.darkMode.palette.text.primary, display: 'block' }}
                 >
-                  {page}
+                  <span>
+                    {page}
+                  </span>
                 </Button>
               ))}
 
@@ -99,10 +104,17 @@ export default function TopNavigationBar() {
               </Menu>
             </Box>
 
-            <Box sx={{ flexGrow: 0 }}>
+            <Box sx={{
+              flexGrow: 0,
+              '@media (max-width: 900px)': {
+                display: 'flex',
+                justifyContent: 'flex-end',
+                width: '100%'
+              }
+            }}>
               <Tooltip title="Open settings">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <IconButton size="large" onClick={handleOpenUserMenu}>
+                  <svg fill={Theme.darkMode.palette.text.primary} xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" /></svg>
                 </IconButton>
               </Tooltip>
               <Menu
@@ -131,7 +143,7 @@ export default function TopNavigationBar() {
           </Toolbar>
         </Container>
       </AppBar>
-    </ElevationScroll>
+    </ElevationScroll >
   );
 }
 
