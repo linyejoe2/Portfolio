@@ -2,8 +2,6 @@
 
 set -e # 顯示錯誤資訊
 
-cp -R ./src/main.tsx ./src/Main.tsx
-
 npm run build # 生成靜態檔案
 
 cd ./dist # 進入生成的資料夾
