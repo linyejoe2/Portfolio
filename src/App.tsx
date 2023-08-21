@@ -17,11 +17,10 @@ import TopNavigationBar from './components/TopNavigationBar'
 
 export default function MyApp() {
   // return (<Box>Raleway 字形測試</Box>)
-  const themeState = useSelector((state: TStore) => state.theme);
+  const darkTheme = useSelector((state: TStore) => state.darkMode);
   return (
     <>
-      {/* <ThemeProvider theme={lightMode}> */}
-      <ThemeProvider theme={themeState == "light" ? lightMode : darkMode}>
+      <ThemeProvider theme={darkTheme ? lightMode : darkMode}>
         <CssBaseline />
         <TopNavigationBar />
         <Container>

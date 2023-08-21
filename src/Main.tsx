@@ -19,9 +19,9 @@ const Main = () => {
     <React.StrictMode>
       <Provider store={store}>
         {/* <ThemeProvider theme={darkMode}> */}
-          {/* <ThemeProvider theme={themeState == "light" ? lightMode : darkMode}> */}
-          
-          <MyApp />
+        {/* <ThemeProvider theme={themeState == "light" ? lightMode : darkMode}> */}
+
+        <MyApp />
         {/* </ThemeProvider> */}
       </Provider>
     </React.StrictMode >)

@@ -11,7 +11,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { useScrollTrigger } from '@mui/material';
-import { themeActions, store, TStore } from '../service/store';
+import { themeActions, store, TStore, darkModeActions } from '../service/store';
 import Theme from '../theme';
 import { useSelector } from 'react-redux';
 
@@ -31,13 +31,9 @@ export default function TopNavigationBar() {
     const pageName = event.currentTarget.id
     if (pages.indexOf(pageName) == -1) return
     // if (pageName == 'Home') {}
-    if (pageName == 'About') { store.dispatch(themeActions.setTheme("dark")) }
-    if (pageName == 'Projects') { store.dispatch(themeActions.setTheme("light")) }
+    if (pageName == 'About') { store.dispatch(darkModeActions.toggle()) }
+    if (pageName == 'Projects') { store.dispatch(darkModeActions.toggle()) }
   }
-
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
-  };
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };

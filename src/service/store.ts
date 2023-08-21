@@ -14,11 +14,23 @@ const themeSlice = createSlice({
   }
 })
 
+const darkModeSlice = createSlice({
+  name: "darkMode",
+  initialState: false,
+  reducers: {
+    toggle: (s) => {
+      return !s
+    }
+  }
+})
+
 export const store = configureStore({
   reducer: {
-    theme: themeSlice.reducer
+    theme: themeSlice.reducer,
+    darkMode: darkModeSlice.reducer
   },
 })
 
 export type TStore = ReturnType<typeof store.getState>
 export const themeActions = themeSlice.actions
+export const darkModeActions = darkModeSlice.actions
