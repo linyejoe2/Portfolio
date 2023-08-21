@@ -11,8 +11,9 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { useScrollTrigger } from '@mui/material';
-import store, { themeActions } from '../service/store';
+import { themeActions, store, TStore } from '../service/store';
 import Theme from '../theme';
+import { useSelector } from 'react-redux';
 
 
 const pages = ['Home', 'About', 'Projects', 'Resume', 'Blogs'];
@@ -69,6 +70,10 @@ export default function TopNavigationBar() {
               }}
             >
               Randy Lin
+            </Typography>
+            <Typography sx={{ color: Theme().palette.text.primary }}>
+              {/* {store.getState().theme} */}
+              {useSelector((s: TStore) => s.theme)}
             </Typography>
             <Box sx={{
               flexGrow: 1,
