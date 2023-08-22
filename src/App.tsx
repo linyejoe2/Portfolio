@@ -4,10 +4,10 @@ import Github from '/img/github.svg'
 import Email from '/img/email.svg'
 import LinkedIn from '/img/linkedIn.svg'
 import LogoMat from '/img/logo-mat.svg'
-import Theme, { darkMode, lightMode } from "./theme";
+import { darkMode, lightMode } from "./theme";
 import { purple } from '@mui/material/colors'
 
-import { Box, Container, CssBaseline, Fab, Stack, ThemeProvider } from '@mui/material';
+import { Box, Container, CssBaseline, Fab, Stack, ThemeProvider, Typography } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import { TypeWriter } from './components/helper/TypeWriter';
 import { HiLighter } from './components/helper/HiLighter';
@@ -20,14 +20,17 @@ export default function MyApp() {
   const darkTheme = useSelector((state: TStore) => state.darkMode);
   return (
     <>
-      <ThemeProvider theme={darkTheme ? lightMode : darkMode}>
+      <ThemeProvider theme={darkTheme ? darkMode : lightMode}>
         <CssBaseline />
-        <TopNavigationBar />
-        <Container>
+        <TopNavigationBar /><Box sx={{ height: '70px', '@media (max-width: 900px)': { height: '40px' } }} />
+        <Container sx={{ paddingTop: "" }}>
           <Grid container spacing={2}>
             <Grid xs={12} md={7} sx={{ paddingLeft: "62px", paddingTop: '80px', '@media (max-width: 900px)': { padding: "30px", paddingRight: "0" } }}>
               <h1>Hi There!</h1>
               <h1>I'm <HiLighter>Randy Lin</HiLighter> </h1>
+              {/* <Typography variant='h2'>
+                I'm <HiLighter>Randy Lin</HiLighter>
+              </Typography> */}
               <h1 >A <HiLighter><TypeWriter /></HiLighter></h1>
             </Grid>
             <Grid xs={12} md={5}>
@@ -74,7 +77,6 @@ export default function MyApp() {
             </Grid>
           </Grid>
         </Container>
-        <Box sx={{ height: '70px' }} />
         <Box
           bgcolor={purple}
           sx={{

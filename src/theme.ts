@@ -1,14 +1,11 @@
-import { createTheme } from '@mui/material/styles'
+import { ThemeOptions, createTheme } from '@mui/material/styles'
 import { purple, deepPurple } from '@mui/material/colors';
 import CubicTTF from '/font/Cubic_11_1.010_R.ttf'
 import RainyHeartsTTF from '/font/rainyhearts.ttf'
 import { store, themeActions } from './service/store';
 import { TTheme } from './service/type';
 
-export const lightMode = createTheme({
-  palette: {
-    mode: 'light'
-  },
+const themeDefaultOption: ThemeOptions = {
   typography: {
     fontFamily: ['Cubic', 'RainyHearts',].join(",")
   },
@@ -32,6 +29,31 @@ export const lightMode = createTheme({
       `,
     },
   },
+  transitions: {
+    duration: {
+      shortest: 150,
+      shorter: 200,
+      short: 250,
+      // most basic recommended timing
+      standard: 300,
+      // this is to be used in complex animations
+      complex: 375,
+      // recommended when something is entering screen
+      enteringScreen: 225,
+      // recommended when something is leaving screen
+      leavingScreen: 195,
+    },
+    easing: {
+      easeInOut: 'cubic-bezier(0.4, 0, 0.2, 1)',
+    }
+  }
+}
+
+export const lightMode = createTheme({
+  palette: {
+    mode: 'light'
+  },
+  ...themeDefaultOption
 })
 
 export const darkMode = createTheme({
@@ -40,7 +62,8 @@ export const darkMode = createTheme({
     mode: 'dark',
     text: {
       primary: "#fff",
-      secondary: "#ba68c8"
+      secondary: "#ba68c8",
+
     },
     primary: purple,
     secondary: deepPurple,
@@ -51,32 +74,5 @@ export const darkMode = createTheme({
       default: "#0e021d"
     }
   },
-  typography: {
-    fontFamily: ['Cubic', 'RainyHearts',].join(",")
-  },
-  components: {
-    MuiCssBaseline: {
-      styleOverrides: `
-        @font-face {
-          font-family: 'Cubic';
-          font-style: normal;
-          font-display: swap;
-          font-weight: 400;
-          src: url(${CubicTTF}) format('truetype');
-        }
-        @font-face {
-          font-family: 'RainyHearts';
-          font-style: normal;
-          font-display: swap;
-          font-weight: 400;
-          src: url(${RainyHeartsTTF}) format('truetype');
-        }
-      `,
-    },
-  },
+  ...themeDefaultOption
 })
-export default function theme() {
-
-  // return store.getState().theme == "light" ? lightMode : darkMode
-  return store.getState().theme == "light" ? lightMode : darkMode
-}

@@ -16,7 +16,7 @@ const themeSlice = createSlice({
 
 const darkModeSlice = createSlice({
   name: "darkMode",
-  initialState: false,
+  initialState: true,
   reducers: {
     toggle: (s) => {
       return !s

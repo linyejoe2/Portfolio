@@ -10,9 +10,8 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import { useScrollTrigger } from '@mui/material';
+import { SvgIcon, useScrollTrigger } from '@mui/material';
 import { themeActions, store, TStore, darkModeActions } from '../service/store';
-import Theme from '../theme';
 import { useSelector } from 'react-redux';
 
 
@@ -49,7 +48,11 @@ export default function TopNavigationBar() {
     <ElevationScroll>
       <AppBar component="nav" >
         <Container maxWidth="lg">
-          <Toolbar>
+          <Toolbar sx={{
+            '@media (max-width: 900px)': {
+              paddingRight: "0px"
+            }
+          }}>
             <Typography
               variant="h6"
               noWrap
@@ -61,32 +64,33 @@ export default function TopNavigationBar() {
                 display: 'flex',
                 fontWeight: 700,
                 letterSpacing: '.1rem',
-                color: 'inherit',
+                color: 'text.primary',
                 textDecoration: 'none',
+                '@media (max-width: 900px)': {
+                  width: "100%"
+                }
               }}
             >
               Randy Lin
-            </Typography>
-            <Typography sx={{ color: Theme().palette.text.primary }}>
-              {/* {store.getState().theme} */}
-              {useSelector((s: TStore) => s.theme)}
             </Typography>
             <Box sx={{
               flexGrow: 1,
               display: { xs: 'none', md: 'flex' },
               justifyContent: "flex-end",
-              marginRight: { xs: '20px', md: '40px' }
+              // marginRight: { xs: '10px', md: '10px' }
             }}>
               {pages.map((page) => (
                 <Button
                   id={page}
                   key={page}
                   onClick={handleNavClick}
-                  sx={{ my: 2, color: Theme().palette.text.secondary, display: 'block' }}
+                  sx={{ my: 2, color: 'text.secondary', display: 'block' }}
                 >
-                  <span>
+                  <Typography>
                     {page}
-                  </span>
+                  </Typography>
+                  {/* <span>
+                  </span> */}
                 </Button>
               ))}
 
@@ -124,8 +128,11 @@ export default function TopNavigationBar() {
             }}>
               <Tooltip title="Open settings">
                 <IconButton size="large" onClick={handleOpenUserMenu}>
-                  {/* <svg fill={Theme.darkMode.palette.text.primary} xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" /></svg> */}
-                  <svg fill={Theme().palette.text.primary} xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" /></svg>
+                  <SvgIcon color="primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                  </SvgIcon>
                 </IconButton>
               </Tooltip>
               <Menu

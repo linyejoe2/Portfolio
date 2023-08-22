@@ -14,3 +14,8 @@
 ::-webkit-scrollbar {
   width: 7px;
 }
+
+body,
+* {
+  transition: background-color 0.75s, color 0.1s;
+}
