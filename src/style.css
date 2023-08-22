@@ -1,5 +1,6 @@
-.Typewriter {
-  display: inline;
+body,
+* {
+  transition: background-color 0.75s, color 0.1s;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -15,7 +16,16 @@
   width: 7px;
 }
 
-body,
-* {
-  transition: background-color 0.75s, color 0.1s;
+.Typewriter {
+  display: inline;
+}
+
+.centerer {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.mb1 {
+  margin-bottom: 10px;
 }

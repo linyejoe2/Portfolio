@@ -10,6 +10,9 @@ const themeDefaultOption: ThemeOptions = {
   components: {
     MuiCssBaseline: {
       styleOverrides: `
+        * {
+          background-image: none !important;
+        }
         @font-face {
           font-family: 'Cubic';
           font-style: normal;
@@ -61,7 +64,6 @@ export const darkMode = createTheme({
     text: {
       primary: "#fff",
       secondary: "#ba68c8",
-
     },
     primary: purple,
     secondary: deepPurple,
@@ -69,7 +71,8 @@ export const darkMode = createTheme({
       main: "#e872e6"
     },
     background: {
-      default: "#0e021d"
+      default: "#0e021d",
+      "paper": "#2a1742"
     }
   },
   ...themeDefaultOption

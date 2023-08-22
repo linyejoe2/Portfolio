@@ -9,8 +9,9 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import { SvgIcon, useScrollTrigger } from '@mui/material';
-import { store, darkModeActions } from '../service/store';
+import { ButtonGroup, Divider, List, ListItem, ListItemButton, ListItemIcon, ListItemText, SvgIcon, SwipeableDrawer, useScrollTrigger } from '@mui/material';
+import { store, darkModeActions, TStore } from '../service/store';
+import { useSelector } from 'react-redux';
 
 
 const pages = ['Home', 'About', 'Projects', 'Resume', 'Blogs'];
@@ -21,6 +22,7 @@ interface Props {
 }
 
 export default function TopNavigationBar() {
+  const darkTheme = useSelector((state: TStore) => state.darkMode);
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
@@ -31,6 +33,13 @@ export default function TopNavigationBar() {
     if (pageName == 'About') { store.dispatch(darkModeActions.toggle()) }
     if (pageName == 'Projects') { store.dispatch(darkModeActions.toggle()) }
   }
+
+  const handleThemeButtonClick = (event: React.MouseEvent<HTMLElement>) => {
+    const n = event.currentTarget.id
+    if (n == "Light") { store.dispatch(darkModeActions.setToLight()) }
+    if (n == 'Dark') { store.dispatch(darkModeActions.setToDark()) }
+  }
+
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
@@ -77,20 +86,42 @@ export default function TopNavigationBar() {
               justifyContent: "flex-end",
               // marginRight: { xs: '10px', md: '10px' }
             }}>
-              {pages.map((page) => (
-                <Button
-                  id={page}
-                  key={page}
-                  onClick={handleNavClick}
-                  sx={{ my: 2, color: 'text.secondary', display: 'block' }}
-                >
-                  <Typography>
-                    {page}
-                  </Typography>
-                  {/* <span>
+              {pages.map((page) => {
+                const on = window.location.href.indexOf(page.toLowerCase()) != -1
+                return (
+                  <Button
+                    id={page}
+                    key={page}
+                    onClick={handleNavClick}
+                    sx={{
+                      my: 2, color: 'text.primary', display: 'block',
+                      "&::after": {
+                        content: "''",
+                        display: "block",
+                        position: "relative",
+                        bottom: '1px',
+                        height: '2px',
+                        background: "#c95bf5",
+                        borderRadius: "16px",
+                        transition: "all 0.3s",
+                        zIndex: '-1',
+                        width: on ? "100%" : '2px',
+                        left: on ? "0" : "50%"
+                      },
+                      "&:hover::after": {
+                        width: "100%",
+                        left: "0",
+                      }
+                    }}
+                  >
+                    <Typography>
+                      {page}
+                    </Typography>
+                    {/* <span>
                   </span> */}
-                </Button>
-              ))}
+                  </Button>
+                )
+              })}
 
               <Menu
                 sx={{ mt: '45px' }}
@@ -126,14 +157,52 @@ export default function TopNavigationBar() {
             }}>
               <Tooltip title="Open settings">
                 <IconButton size="large" onClick={handleOpenUserMenu}>
-                  <SvgIcon color="primary">
+                  <SvgIcon >
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                     </svg>
                   </SvgIcon>
                 </IconButton>
               </Tooltip>
-              <Menu
+              <SwipeableDrawer
+                anchor="right"
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+                onOpen={handleOpenUserMenu}
+              // onOpen={toggleDrawer(anchor, true)}
+              >
+                <Box sx={{ width: '250px', padding: '10px' }}>
+                  <Box sx={{ display: "flex", position: "absolute", top: "10px", right: "10px" }}>
+                    <IconButton>
+                      <SvgIcon >
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      </SvgIcon>
+                    </IconButton>
+                  </Box>
+                  <div className="centerer " style={{ margin: "10px auto" }}>
+                    <Typography>Settings</Typography>
+                  </div>
+                  <Divider textAlign="left" sx={{ marginBottom: "10px" }}>Mode</Divider>
+                  <div className="centerer mb1">
+                    <ButtonGroup fullWidth variant="outlined" aria-label="Theme Mode change button group">
+                      <Button onClick={handleThemeButtonClick} variant={!darkTheme ? "contained" : "outlined"} id='Light'>Light</Button>
+                      <Button onClick={handleThemeButtonClick} variant={darkTheme ? "contained" : "outlined"} id='Dark'>Dark</Button>
+                    </ButtonGroup>
+                  </div>
+                  <Divider textAlign="left" sx={{ marginBottom: "10px" }}>Langauge TODO</Divider>
+                  <div className="centerer mb1">
+                    <ButtonGroup fullWidth orientation="vertical"
+                      variant="outlined" aria-label="outlined primary button group">
+                      <Button variant="contained">English</Button>
+                      <Button>Traditional Chinese</Button>
+                    </ButtonGroup>
+                  </div>
+                </Box>
+              </SwipeableDrawer>
+
+              {/* <Menu
                 sx={{ mt: '45px' }}
                 id="menu-appbar"
                 anchorEl={anchorElUser}
@@ -149,12 +218,18 @@ export default function TopNavigationBar() {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
+                <Divider textAlign="left">Mode</Divider>
+                <ButtonGroup variant="contained" aria-label="outlined primary button group">
+                  <Button>Light</Button>
+                  <Button>Dark</Button>
+                </ButtonGroup>
+
                 {settings.map((setting) => (
                   <MenuItem key={setting} onClick={handleCloseUserMenu}>
                     <Typography textAlign="center">{setting}</Typography>
                   </MenuItem>
                 ))}
-              </Menu>
+              </Menu> */}
             </Box>
           </Toolbar>
         </Container>

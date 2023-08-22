@@ -85,7 +85,7 @@ export default function MyApp() {
             display: 'flex',
             justifyContent: "center",
             alignItems: "center",
-            backgroundColor: "primary.dark"
+            backgroundColor: "background.paper"
           }}>
           Copyright © 2023 linyejoe2
 

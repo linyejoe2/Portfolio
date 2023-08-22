@@ -19,7 +19,9 @@ const darkModeSlice = createSlice({
   reducers: {
     toggle: (s) => {
       return !s
-    }
+    },
+    setToDark: () => true,
+    setToLight: () => false
   }
 })
 
