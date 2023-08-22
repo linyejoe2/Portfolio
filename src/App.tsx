@@ -7,11 +7,11 @@ import LogoMat from '/img/logo-mat.svg'
 import { darkMode, lightMode } from "./theme";
 import { purple } from '@mui/material/colors'
 
-import { Box, Container, CssBaseline, Fab, Stack, ThemeProvider, Typography } from '@mui/material';
+import { Box, Container, CssBaseline, Fab, Stack, ThemeProvider } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import { TypeWriter } from './components/helper/TypeWriter';
 import { HiLighter } from './components/helper/HiLighter';
-import { Provider, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { TStore } from './service/store'
 import TopNavigationBar from './components/TopNavigationBar'
 

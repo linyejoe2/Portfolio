@@ -2,6 +2,8 @@
 
 set -e # 顯示錯誤資訊
 
+npm run lint-fix # 修正錯誤
+
 npm run build # 生成靜態檔案
 
 cd ./dist # 進入生成的資料夾

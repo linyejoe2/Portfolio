@@ -2,8 +2,6 @@ import { ThemeOptions, createTheme } from '@mui/material/styles'
 import { purple, deepPurple } from '@mui/material/colors';
 import CubicTTF from '/font/Cubic_11_1.010_R.ttf'
 import RainyHeartsTTF from '/font/rainyhearts.ttf'
-import { store, themeActions } from './service/store';
-import { TTheme } from './service/type';
 
 const themeDefaultOption: ThemeOptions = {
   typography: {

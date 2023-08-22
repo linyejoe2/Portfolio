@@ -1,5 +1,4 @@
-import { AnyAction, PayloadAction, configureStore, createSlice } from '@reduxjs/toolkit'
-import type { Reducer } from 'redux'
+import { PayloadAction, configureStore, createSlice } from '@reduxjs/toolkit'
 import { TTheme } from './type';
 
 const themeSlice = createSlice({

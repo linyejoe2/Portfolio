@@ -1,6 +1,5 @@
 import React from "react";
 import { FC } from "react";
-import { ThemeProvider } from "@emotion/react";
 import { Box } from "@mui/material";
 
 interface p {

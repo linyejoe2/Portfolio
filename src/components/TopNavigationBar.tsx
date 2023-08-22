@@ -6,13 +6,11 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { SvgIcon, useScrollTrigger } from '@mui/material';
-import { themeActions, store, TStore, darkModeActions } from '../service/store';
-import { useSelector } from 'react-redux';
+import { store, darkModeActions } from '../service/store';
 
 
 const pages = ['Home', 'About', 'Projects', 'Resume', 'Blogs'];
