@@ -1,26 +1,30 @@
-import { createHashRouter } from 'react-router-dom'
+import { createHashRouter, redirect, Route, Routes, Navigate } from 'react-router-dom'
+import Home from './page/Home'
+import ErrorPage from './page/ErrorPage'
+import About from './page/About'
+import Projects from './page/Projects'
 
-export default createHashRouter([
+export const Router = createHashRouter([
+  {
+    path: '/',
+    element: <Navigate to="/home" />
+  },
   {
     path: '/home',
-    element: <App />,
+    element: <Home />,
     errorElement: <ErrorPage />
   },
   {
-    path: '/hello-world',
-    element: <HelloWorld />
+    path: "/about",
+    element: <About />
   },
   {
-    path: '/survey',
-    element: <Survey />
+    path: "/projects",
+    element: <Projects />
   },
   {
-    path: '/finish',
-    element: <FinishPage />
-  },
-  {
-    path: '/about-us',
-    element: <AboutPage />
+    path: '/err',
+    element: <ErrorPage />
   }
 ]
   // , {

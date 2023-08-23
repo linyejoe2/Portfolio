@@ -1,4 +1,5 @@
 import Button from '@mui/material/Button'
+import { Container } from '@mui/system'
 import { useRouteError } from 'react-router-dom'
 
 interface Ierr {
@@ -12,15 +13,18 @@ export default function ErrorPage() {
   console.error(error)
 
   return (
-    <div id="error-page">
-      <h1>Oops!</h1>
-      <p>Sorry, an unexpected error has occurred.</p>
-      <p>
-        <i>{error?.status + ' ' || ''}</i>
-        <i>{error?.statusText || error?.message || 'undefined error '}</i>
-        <i>{' 😭😭😭'}</i>
-      </p>
-      <Button variant="outlined" href="./">Maybe back to home page 🤔🤔🤔</Button>
-    </div>
+    <Container>
+      <div className="centerer">
+        <div id="error-page" >
+          <h1>Oops!</h1>
+          <p>Sorry, an unexpected error has occurred.</p>
+          <p>
+            <i>{error?.status + ' ' || ''}</i>
+            <i>{error?.statusText || error?.message || 'undefined error '}</i>
+            <i>{' 😭😭😭'}</i>
+          </p>
+          <Button variant="outlined" href="./">Maybe back to home page 🤔🤔🤔</Button>
+        </div></div>
+    </Container>
   )
 }

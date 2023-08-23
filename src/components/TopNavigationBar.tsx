@@ -9,9 +9,11 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import { ButtonGroup, Divider, List, ListItem, ListItemButton, ListItemIcon, ListItemText, SvgIcon, SwipeableDrawer, useScrollTrigger } from '@mui/material';
+import { ButtonGroup, Divider, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Snackbar, SvgIcon, SwipeableDrawer, useScrollTrigger } from '@mui/material';
 import { store, darkModeActions, TStore } from '../service/store';
 import { useSelector } from 'react-redux';
+import { redirect, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 
 const pages = ['Home', 'About', 'Projects', 'Resume', 'Blogs'];
@@ -22,16 +24,28 @@ interface Props {
 }
 
 export default function TopNavigationBar() {
+  const [reloadKey, setReloadKey] = useState(0);
+  const handleReload = () => {
+    setReloadKey(reloadKey + 1);
+  };
+
   const darkTheme = useSelector((state: TStore) => state.darkMode);
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+  const [anchorSnackbar, setAnchorSnackbar] = React.useState<boolean>(false);
 
   const handleNavClick = (event: React.MouseEvent<HTMLElement>) => {
     const pageName = event.currentTarget.id
     if (pages.indexOf(pageName) == -1) return
-    // if (pageName == 'Home') {}
-    if (pageName == 'About') { store.dispatch(darkModeActions.toggle()) }
-    if (pageName == 'Projects') { store.dispatch(darkModeActions.toggle()) }
+    if (pageName == 'Home') window.location.href = '/#/home'
+    if (pageName == 'About') window.location.href = '/#/about'
+    if (pageName == 'Projects') window.location.href = '/#/projects'
+    if (pageName == 'Resume') {
+      return (setAnchorSnackbar(true))
+    }
+    if (pageName == 'Blogs') window.open("https://linyejoe2.github.io/", 'blog')
+
+    handleReload()
   }
 
   const handleThemeButtonClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -55,6 +69,13 @@ export default function TopNavigationBar() {
     <ElevationScroll>
       <AppBar component="nav" >
         <Container maxWidth="lg">
+          <Snackbar anchorOrigin={{ vertical: "top", horizontal: "center" }}
+            open={anchorSnackbar}
+            message="TODO"
+            key="dsfa"
+            onClose={() => setAnchorSnackbar(false)}
+            sx={{ backgroundColor: "warning.main" }}
+          />
           <Toolbar sx={{
             '@media (max-width: 900px)': {
               paddingRight: "0px"
@@ -64,7 +85,7 @@ export default function TopNavigationBar() {
               variant="h6"
               noWrap
               component="a"
-              href="/"
+              href="/#/home"
               sx={{
                 mr: 2,
                 // display: { xs: 'none', md: 'flex' },
@@ -87,7 +108,7 @@ export default function TopNavigationBar() {
               // marginRight: { xs: '10px', md: '10px' }
             }}>
               {pages.map((page) => {
-                const on = window.location.href.indexOf(page.toLowerCase()) != -1
+                const on = window.location.hash.indexOf(page.toLowerCase()) != -1 || (window.location.hash == '' && page.toLowerCase() == "home")
                 return (
                   <Button
                     id={page}
@@ -191,12 +212,12 @@ export default function TopNavigationBar() {
                       <Button onClick={handleThemeButtonClick} variant={darkTheme ? "contained" : "outlined"} id='Dark'>Dark</Button>
                     </ButtonGroup>
                   </div>
-                  <Divider textAlign="left" sx={{ marginBottom: "10px" }}>Langauge TODO</Divider>
+                  <Divider textAlign="left" sx={{ marginBottom: "10px" }}>Langauge</Divider>
                   <div className="centerer mb1">
                     <ButtonGroup fullWidth orientation="vertical"
                       variant="outlined" aria-label="outlined primary button group">
                       <Button variant="contained">English</Button>
-                      <Button>Traditional Chinese</Button>
+                      <Button>TODO Traditional Chinese</Button>
                     </ButtonGroup>
                   </div>
                 </Box>

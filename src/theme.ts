@@ -1,4 +1,5 @@
 import { ThemeOptions, createTheme } from '@mui/material/styles'
+// import { ThemeOptions, createTheme } from '@mui/system'
 import { purple, deepPurple } from '@mui/material/colors';
 import CubicTTF from '/font/Cubic_11_1.010_R.ttf'
 import RainyHeartsTTF from '/font/rainyhearts.ttf'
@@ -52,7 +53,19 @@ const themeDefaultOption: ThemeOptions = {
 
 export const lightMode = createTheme({
   palette: {
-    mode: 'light'
+    mode: 'light',
+    primary: {
+      main: "#9c27b0"
+    },
+    info: {
+      main: "#e872e6"
+    },
+    background: {
+      paper: "#cecece"
+    },
+    text: {
+      secondary: "#ac53bb"
+    }
   },
   ...themeDefaultOption
 })
@@ -65,7 +78,10 @@ export const darkMode = createTheme({
       primary: "#fff",
       secondary: "#ba68c8",
     },
-    primary: purple,
+    primary: {
+      main: "#9c27b0"
+    },
+    // primary: purple,
     secondary: deepPurple,
     info: {
       main: "#e872e6"
@@ -73,7 +89,8 @@ export const darkMode = createTheme({
     background: {
       default: "#0e021d",
       "paper": "#2a1742"
-    }
+    },
+    warning: { main: "#000" }
   },
   ...themeDefaultOption
 })
