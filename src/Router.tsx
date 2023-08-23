@@ -1,4 +1,4 @@
-import { createHashRouter, redirect, Route, Routes, Navigate } from 'react-router-dom'
+import { createHashRouter, Navigate } from 'react-router-dom'
 import Home from './page/Home'
 import ErrorPage from './page/ErrorPage'
 import About from './page/About'
@@ -27,7 +27,4 @@ export const Router = createHashRouter([
     element: <ErrorPage />
   }
 ]
-  // , {
-  //   basename: import.meta.env.BASE_URL.slice(0, -1)
-  // }
 )

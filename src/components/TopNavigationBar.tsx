@@ -9,11 +9,10 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import { ButtonGroup, Divider, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Snackbar, SvgIcon, SwipeableDrawer, useScrollTrigger } from '@mui/material';
+import { ButtonGroup, Divider, Snackbar, SvgIcon, SwipeableDrawer, useScrollTrigger } from '@mui/material';
 import { store, darkModeActions, TStore } from '../service/store';
 import { useSelector } from 'react-redux';
-import { redirect, useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 
 const pages = ['Home', 'About', 'Projects', 'Resume', 'Blogs'];

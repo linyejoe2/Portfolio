@@ -5,15 +5,14 @@ import { Box, CssBaseline, ThemeProvider } from '@mui/material';
 import { useSelector } from 'react-redux'
 import { TStore } from './service/store'
 import TopNavigationBar from './components/TopNavigationBar'
-import Home from './page/Home'
-import { Route, RouterProvider } from "react-router";
+import { RouterProvider } from "react-router";
 import { Router } from "./Router";
 import Loading from "./components/Loading";
 const env = import.meta.env
 
 export default function MyApp() {
   // return (<Box>Raleway 字形測試</Box>)
-  console.log(env.VITE_DEV_MODE)
+  console.log(env.BASE_URL)
   const darkTheme = useSelector((state: TStore) => state.darkMode);
   return (
     <>

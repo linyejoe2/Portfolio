@@ -1,6 +1,6 @@
 import { ThemeOptions, createTheme } from '@mui/material/styles'
 // import { ThemeOptions, createTheme } from '@mui/system'
-import { purple, deepPurple } from '@mui/material/colors';
+import { deepPurple } from '@mui/material/colors';
 import CubicTTF from '/font/Cubic_11_1.010_R.ttf'
 import RainyHeartsTTF from '/font/rainyhearts.ttf'
 
