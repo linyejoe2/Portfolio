@@ -40,7 +40,7 @@ export default function Loading() {
   React.useEffect(() => {
     setInterval(() => {
       setProgress((prevProgress) => Math.min(prevProgress + (Math.random() * 10 / 2), 100));
-    }, 100);
+    }, 50);
   }, []);
 
   return (

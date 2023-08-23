@@ -8,18 +8,17 @@ import TopNavigationBar from './components/TopNavigationBar'
 import { RouterProvider } from "react-router";
 import { Router } from "./Router";
 import Loading from "./components/Loading";
-const env = import.meta.env
+import { DEV } from "./service/CONST";
 
 export default function MyApp() {
   // return (<Box>Raleway 字形測試</Box>)
-  console.log(env.BASE_URL)
   const darkTheme = useSelector((state: TStore) => state.darkMode);
   return (
     <>
       <ThemeProvider theme={darkTheme ? darkMode : lightMode}>
         <CssBaseline />
         <TopNavigationBar /><Box sx={{ height: '70px', '@media (max-width: 900px)': { height: '40px' } }} />
-        {env.VITE_DEV_MODE == 'true' ? undefined : <Loading />}
+        {DEV == 'true' ? undefined : <Loading />}
         <RouterProvider router={Router} />
         <Box
           bgcolor={purple}

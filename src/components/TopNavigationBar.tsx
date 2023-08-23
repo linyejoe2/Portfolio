@@ -13,6 +13,7 @@ import { ButtonGroup, Divider, Snackbar, SvgIcon, SwipeableDrawer, useScrollTrig
 import { store, darkModeActions, TStore } from '../service/store';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
+import { BASE } from "../service/CONST"
 
 
 const pages = ['Home', 'About', 'Projects', 'Resume', 'Blogs'];
@@ -36,9 +37,9 @@ export default function TopNavigationBar() {
   const handleNavClick = (event: React.MouseEvent<HTMLElement>) => {
     const pageName = event.currentTarget.id
     if (pages.indexOf(pageName) == -1) return
-    if (pageName == 'Home') window.location.href = '/#/home'
-    if (pageName == 'About') window.location.href = '/#/about'
-    if (pageName == 'Projects') window.location.href = '/#/projects'
+    if (pageName == 'Home') window.location.href = BASE + '/#/home'
+    if (pageName == 'About') window.location.href = BASE + '/#/about'
+    if (pageName == 'Projects') window.location.href = BASE + '/#/projects'
     if (pageName == 'Resume') {
       return (setAnchorSnackbar(true))
     }
