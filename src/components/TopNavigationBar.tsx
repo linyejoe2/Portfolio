@@ -271,17 +271,16 @@ function ElevationScroll(props: Props) {
   return React.cloneElement(props.children, {
     style: {
       ...(trigger ? {
-        backdropFilter: 'blur(5px)',
         backgroundImage: "none",
         backgroundColor: 'rgba(255, 255, 255, .15)',
+        animation: 'blur-in 500ms 2s forwards'
       } : {
         boxShadow: 'none',
         backgroundImage: "none",
-        backgroundColor: 'rgba(0, 0, 0, 0)'
+        backgroundColor: 'rgba(0, 0, 0, 0)',
+        animation: 'blur-in 500ms 2s forwards'
       }),
-      // transition: 'all 1s',
-      // transition: 'background-color 1s',
-      transition: 'background-color 1s, box-shadow 1s, backdrop-filter 1s',
+      transition: 'background-color 1s, box-shadow 1s',
       marginLeft: 'calc(100vw - 100%)'
     }
   });
