@@ -43,7 +43,7 @@ export const lightMode = createTheme({
       main: "#e872e6"
     },
     background: {
-      paper: "#cecece"
+      paper: "#cecece",
     },
     text: {
       secondary: "#ac53bb"
