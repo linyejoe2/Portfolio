@@ -61,12 +61,12 @@ export const darkMode = createTheme({
       secondary: "#ba68c8",
     },
     primary: {
-      main: "#9c27b0"
+      main: "#622e87"
     },
     // primary: purple,
     secondary: deepPurple,
     info: {
-      main: "#e872e6"
+      main: "#9c27b0"
     },
     background: {
       default: "#0e021d",

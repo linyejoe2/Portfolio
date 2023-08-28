@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { Container, Typography } from "@mui/material";
+import { Button, Container, Typography } from "@mui/material";
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Unstable_Grid2';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import { p } from '../service/type';
 import ReactMarkdown from 'react-markdown'
+import { createElement } from 'react';
 
 
 // const Item = styled(Paper)(({ theme }) => ({
@@ -89,6 +90,29 @@ interface p2 extends p {
   project: IProject
 }
 
+const ButtonGroup = (a: { name: string, url: string }[]) => {
+  const group: JSX.Element[] = []
+  for (const ele of a) {
+    if (ele.name == 'demo') {
+      group.push(
+        <Button variant="contained">
+          Demo
+        </Button>
+      )
+    }
+    if (ele.name == 'code') {
+      group.push(
+        <Button variant="contained">
+          Code
+        </Button>
+      )
+    }
+  }
+  return (<Box pt={2} display="flex" justifyContent="space-evenly" >
+    {group}
+  </Box>)
+}
+
 const Item = (props: p2) => {
   // const Item = (props: {p, project: IProject}) => {
   return (
@@ -100,14 +124,18 @@ const Item = (props: p2) => {
         height: "550px",
       }} p={2}>
       {props.children}
-      {/* {props.project.description} */}
       <Box>
-        <img width="100%" height='165px' src={props.project.preview ?? 'https://i.imgur.com/6ilYGnm.jpg'} alt="preview" />
+        <Box component="img" borderRadius='10px' width="100%" height='165px' src={props.project.preview ?? 'https://i.imgur.com/6ilYGnm.jpg'} alt="preview"></Box>
+
       </Box>
       <h2 style={{ textAlign: "center" }}>{props.project.name}</h2>
       <Box sx={{ height: "auto", overflowY: "scroll", "::-webkit-scrollbar": { width: '2px' } }}>
         <ReactMarkdown>{props.project.description}</ReactMarkdown>
       </Box>
+
+      {props.project.link ?
+        ButtonGroup(props.project.link)
+        : undefined}
     </Box>
   )
 }
