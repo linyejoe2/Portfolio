@@ -1,6 +1,6 @@
 import { darkMode, lightMode } from "./theme";
 import { purple } from '@mui/material/colors'
-
+import type {} from '@mui/material/themeCssVarsAugmentation';
 import { Box, CssBaseline, ThemeProvider } from '@mui/material';
 import { useSelector } from 'react-redux'
 import { TStore } from './service/store'
@@ -17,7 +17,7 @@ export default function MyApp() {
     <>
       <ThemeProvider theme={darkTheme ? darkMode : lightMode}>
         <CssBaseline />
-        <TopNavigationBar /><Box sx={{ height: '70px', '@media (max-width: 900px)': { height: '40px' } }} />
+        <TopNavigationBar /><Box sx={{ height: '100px', '@media (max-width: 900px)': { height: '40px' } }} />
         {DEV == 'true' ? undefined : <Loading />}
         <RouterProvider router={Router} />
         <Box
@@ -30,7 +30,10 @@ export default function MyApp() {
             alignItems: "center",
             backgroundColor: "background.paper"
           }}>
-          Copyright © 2023 linyejoe2
+          Copyright © 2023
+          <Box component="a" href="https://github.com/linyejoe2" sx={{ marginLeft: "5px", color: "text.secondary" }}>
+            linyejoe2
+          </Box>
 
         </Box>
       </ThemeProvider>

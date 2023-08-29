@@ -1,18 +1,47 @@
 import { ThemeOptions, createTheme } from '@mui/material/styles'
 // import { ThemeOptions, createTheme } from '@mui/system'
 import { deepPurple } from '@mui/material/colors';
-import CubicTTF from '/font/Cubic_11_1.010_R.ttf'
-import RainyHeartsTTF from '/font/rainyhearts.ttf'
+import CubicTTF from '/font/pixel/Cubic_11_1.010_R.ttf'
+import RainyHeartsTTF from '/font/pixel/rainyhearts.ttf'
+import RaskowyTTF from "/font/pixel/rainyhearts.ttf"
+import VcrOsdTTF from "/font/pixel/VcrOsd.ttf"
+import MinecraftTTF from "/font/pixel/Minecraft.ttf"
+import JostTTF from "/font/Jost.ttf"
+// import NotoSansTCTTF from "/font/NotoSansTC.ttf"
+import RalewayTTF from "/font/Raleway.ttf"
+import LibreFranklinTTF from "/font/LibreFranklin.ttf"
 
 const themeDefaultOption: ThemeOptions = {
   typography: {
-    fontFamily: ['Cubic', 'RainyHearts',].join(",")
+    fontFamily: ["LibreFranklin", 'Raleway', 'NotoSansTC', 'Jost',].join(",")
+    // fontFamily: ['Minecraft', 'VcrOsd', 'Paskowy', 'RainyHearts', 'Cubic',].join(",")
   },
   components: {
     MuiCssBaseline: {
       styleOverrides: `
         * {
           background-image: none !important;
+        }
+        @font-face {
+          font-family: 'LibreFranklin';
+          font-style: normal;
+          font-display: swap;
+          font-weight: 400;
+          src: url(${LibreFranklinTTF}) format('truetype');
+        }
+        @font-face {
+          font-family: 'Raleway';
+          font-style: normal;
+          font-display: swap;
+          font-weight: 400;
+          src: url(${RalewayTTF}) format('truetype');
+        }
+        @font-face {
+          font-family: 'Jost';
+          font-style: normal;
+          font-display: swap;
+          font-weight: 400;
+          src: url(${JostTTF}) format('truetype');
         }
         @font-face {
           font-family: 'Cubic';
@@ -27,6 +56,27 @@ const themeDefaultOption: ThemeOptions = {
           font-display: swap;
           font-weight: 400;
           src: url(${RainyHeartsTTF}) format('truetype');
+        }
+        @font-face {
+          font-family: 'Paskowy';
+          font-style: normal;
+          font-display: swap;
+          font-weight: 400;
+          src: url(${RaskowyTTF}) format('truetype');
+        }
+        @font-face {
+          font-family: 'VcrOsd';
+          font-style: normal;
+          font-display: swap;
+          font-weight: 400;
+          src: url(${VcrOsdTTF}) format('truetype');
+        }
+        @font-face {
+          font-family: 'Minecraft';
+          font-style: normal;
+          font-display: swap;
+          font-weight: 400;
+          src: url(${MinecraftTTF}) format('truetype');
         }
       `,
     },
@@ -43,7 +93,7 @@ export const lightMode = createTheme({
       main: "#e872e6"
     },
     background: {
-      paper: "#cecece",
+      paper: "#caadd6",
     },
     text: {
       secondary: "#ac53bb"

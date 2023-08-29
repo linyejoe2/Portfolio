@@ -26,6 +26,9 @@ export default function Home() {
         <img src={HomeMain} alt="HomeMain" style={{ height: "auto", maxWidth: "100%" }} />
       </Grid>
       <Grid md={12} sx={{ height: "100px", '@media (max-width: 900px)': { display: 'none' } }}></Grid>
+      <Grid xs={12} md={4} sx={{ padding: "35px", margin: "auto", display: "flex", justifyContent: "center" }}>
+        <img src={avatar} alt="HomeMain" style={{ height: "auto", maxWidth: "80%", borderRadius: "500px" }} />
+      </Grid>
       <Grid xs={12} md={8} sx={{ paddingLeft: "62px", '@media (max-width: 900px)': { padding: "20px" } }}>
         <h1 style={{ textTransform: 'uppercase', textAlign: "center", marginBottom: "50px" }}>Allow me to <HiLighter>introduce</HiLighter> myself</h1>
         <p style={{ fontSize: "20px" }}>
@@ -40,9 +43,6 @@ export default function Home() {
           If you happen to be looking for someone proficient in <HiLighter>TS, C++</HiLighter>, or if you need a talent to assist in developing <HiLighter>GIS or QT apps</HiLighter>, please feel free to <HiLighter>reach out</HiLighter> to me.
         </p>
       </Grid>
-      <Grid xs={12} md={4} sx={{ padding: "35px", margin: "auto", display: "flex", justifyContent: "center" }}>
-        <img src={avatar} alt="HomeMain" style={{ height: "auto", maxWidth: "80%", borderRadius: "500px" }} />
-      </Grid>
       <Grid xs={12} md={12}>
         <h1 style={{ textAlign: "center", margin: "50px auto 0 auto" }}> <HiLighter>Contact</HiLighter> me</h1>
       </Grid>
@@ -53,8 +53,8 @@ export default function Home() {
               <img src={Github} height={25} width={25} />
             </Fab>
             <Fab size="small" href='mailto:linyejoe2@gmail.com' aria-label="contact me with email" title='My Email'>
-              <img src={Email} height={25} width={25} />        
-            </Fab>  
+              <img src={Email} height={25} width={25} />
+            </Fab>
             <Fab size="small" href='https://www.linkedin.com/in/randy-lin/' aria-label="go to My LinkedIn" target='linkedin' title='My LinkedIn'>
               <img src={LinkedIn} height={25} width={25} />
             </Fab>

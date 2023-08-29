@@ -194,7 +194,7 @@ export default function TopNavigationBar() {
               >
                 <Box sx={{ width: '250px', padding: '10px' }}>
                   <Box sx={{ display: "flex", position: "absolute", top: "10px", right: "10px" }}>
-                    <IconButton>
+                    <IconButton onClick={handleCloseUserMenu}>
                       <SvgIcon >
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -272,7 +272,7 @@ function ElevationScroll(props: Props) {
     style: {
       ...(trigger ? {
         backgroundImage: "none",
-        backgroundColor: 'rgba(255, 255, 255, .15)',
+        backgroundColor: '#7c4e8f61',
         animation: 'blur-in 500ms 2s forwards'
       } : {
         boxShadow: 'none',
@@ -280,7 +280,7 @@ function ElevationScroll(props: Props) {
         backgroundColor: 'rgba(0, 0, 0, 0)',
         animation: 'blur-in 500ms 2s forwards'
       }),
-      transition: 'background-color 1s, box-shadow 1s',
+      transition: 'background-color 2s, box-shadow 1s',
       marginLeft: 'calc(100vw - 100%)'
     }
   });

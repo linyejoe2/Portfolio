@@ -4,12 +4,12 @@ body,
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(178, 121, 216, .959);
+  background-color: rgba(178, 121, 216, .959);
   border-radius: 12px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #443e4f;
+  background-color: #443e4f;
 }
 
 ::-webkit-scrollbar {
