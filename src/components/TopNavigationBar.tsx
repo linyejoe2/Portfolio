@@ -45,6 +45,7 @@ export default function TopNavigationBar() {
     }
     if (pageName == 'Blogs') window.open("https://linyejoe2.github.io/", 'blog')
 
+    if (anchorElUser) setAnchorElUser(null)
     handleReload()
   }
 
@@ -202,9 +203,41 @@ export default function TopNavigationBar() {
                       </SvgIcon>
                     </IconButton>
                   </Box>
-                  <div className="centerer " style={{ margin: "10px auto" }}>
+                  <Box className="centerer " sx={{
+                    margin: "10px auto",
+                    display: { xs: 'none', md: 'flex' },
+                  }}>
                     <Typography>Settings</Typography>
-                  </div>
+                  </Box>
+                  <Box className="centerer " sx={{
+                    margin: "20px auto",
+                  }}>
+                  </Box>
+                  <Box
+                    sx={{
+                      display: { xs: 'block', md: 'none' }
+                    }}>
+
+                    <Divider textAlign="left" sx={{ marginBottom: "10px" }}>Menu</Divider>
+                    <div className="centerer mb1">
+                      <ButtonGroup fullWidth orientation="vertical" aria-label="Menu button group">
+                        {pages.map((page) => {
+                          return (
+                            <Button
+                              id={page}
+                              key={page}
+                              onClick={handleNavClick}
+                              variant={window.location.href.indexOf(page.toLowerCase()) != -1 ? "contained" : "outlined"}
+                            >
+                              <Typography>
+                                {page}
+                              </Typography>
+                            </Button>
+                          )
+                        })}
+                      </ButtonGroup>
+                    </div>
+                  </Box>
                   <Divider textAlign="left" sx={{ marginBottom: "10px" }}>Mode</Divider>
                   <div className="centerer mb1">
                     <ButtonGroup fullWidth variant="outlined" aria-label="Theme Mode change button group">
@@ -254,7 +287,7 @@ export default function TopNavigationBar() {
             </Box>
           </Toolbar>
         </Container>
-      </AppBar>
+      </AppBar >
     </ElevationScroll >
   );
 }
