@@ -30,7 +30,7 @@ export default function MyApp() {
             alignItems: "center",
             backgroundColor: "background.paper"
           }}>
-          Copyright © 2023
+          Copyright © 2024
           <Box component="a" href="https://github.com/linyejoe2" sx={{ marginLeft: "5px", color: "text.secondary" }}>
             linyejoe2
           </Box>
