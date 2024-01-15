@@ -7,7 +7,7 @@ export const TypeWriter: FC = () => {
       options={{
         strings: [
           "Software Developer",
-          "Backend Developer",
+          "Full-stack Developer",
         ],
         autoStart: true,
         loop: true,

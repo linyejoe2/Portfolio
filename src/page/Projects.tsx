@@ -191,7 +191,7 @@ You can use it to find basketball venues near you, or search a game!
     link: [{
       name: 'demo',
       url: "https://linyejoe2.github.io/b-ball-explorer/"
-    }],
+    }, { name: 'code', url: 'https://github.com/linyejoe2/b-ball-explorer/tree/master' }],
     preview: "https://i.imgur.com/J0ObVQT.png",
     tag: ["html", "css", 'js', 'arcgisjs']
   },
