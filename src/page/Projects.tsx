@@ -6,6 +6,7 @@ import { p } from '../service/type';
 import ReactMarkdown from 'react-markdown'
 import type { } from '@mui/material/themeCssVarsAugmentation';
 import { Link } from "react-router-dom";
+import { useTranslation } from 'react-i18next'
 
 
 // const Item = styled(Paper)(({ theme }) => ({
@@ -19,6 +20,8 @@ import { Link } from "react-router-dom";
 interface IProject {
   name: string,
   description: string,
+  nameZh: string,
+  descriptionZh: string,
   preview?: string,
   // link: [{ name: string, url: string }]
   link?: { name: string, url: string }[],
@@ -135,6 +138,7 @@ const Tag: ITagCollection = {
 const projects: IProject[] = [
   {
     name: "Chose the Best Social Media UI Design in Your Mind!",
+    nameZh: "選擇你最喜歡的社群媒體介面！",
     description:
       `
 This is an interactive online survey aimed at collecting user preferences for the UI design of the four major social media platforms.
@@ -146,6 +150,7 @@ This is an interactive online survey aimed at collecting user preferences for th
     //   + Gain insights into the preferred UI designs of users in the Taiwan region for the four major social media platforms. Additionally, we intend to leverage this data to assist in the development of new social media platforms.
     //       `
     ,
+    descriptionZh: "這是一個線上互動式問卷，調查了使用者對於社群媒體 UI 的喜好。",
     preview: "https://i.imgur.com/YN9C88y.jpg",
     link: [
       { name: "demo", url: "https://linyejoe2.github.io/app-ui-survey-react/" },
@@ -155,21 +160,30 @@ This is an interactive online survey aimed at collecting user preferences for th
   },
   {
     name: "3D Car Game",
+    nameZh: "3D 賽車小遊戲",
     description:
       `
 A 3D game made with Three.js and React, In this game, you can control a car and race on a race track!
       `,
+    descriptionZh: "使用 Three.js 和 React 製作的 3D 賽車小遊戲，你可以控制小車車來一場激情狂飆！",
     preview: "https://i.imgur.com/rkIQRz8.png",
     link: [{ name: "demo", url: 'https://linyejoe2.github.io/3d-car-game/' }, { name: "code", url: 'https://github.com/linyejoe2/3d-car-game' }],
     tag: ["threejs", "react"]
   },
   {
     name: "Situation puzzle with ChatGPT",
+    nameZh: "海龜湯謎語人",
     description:
       `
-A LINE bot that combines the chat capabilities of ChatGPT with LINE's messaging features. 
+Situation puzzle with ChatGPT is a LINE bot that combines the chat capabilities of ChatGPT with LINE's messaging features. 
 
 You can interact with this bot to play a game called Situation puzzle.
+      `,
+    descriptionZh:
+      `
+一個使用 LINE bot 及 ChatGPT 製作的 LINE 小遊戲。
+
+你可以透過詢問 LINE bot 來進行一場海龜湯遊戲，終極目標是猜出題目的物品是什麼。
       `,
     link: [{
       name: 'demo',
@@ -180,13 +194,21 @@ You can interact with this bot to play a game called Situation puzzle.
   },
   {
     name: "Basketball Explorer",
+    nameZh: "台灣籃球地圖",
     description:
       `
-This is an interactive map that records all basketball venues in Taiwan.
+Basketball Explorer is an interactive map that records all basketball venues in Taiwan.
 
 with a schedule of basketball events.
 
 You can use it to find basketball venues near you, or search a game!
+      `,
+    descriptionZh: `
+這是一個互動式地圖，紀錄了台灣的所有籃球場所在位置。
+
+上方還有各大籃球聯賽的賽程表。
+
+你可以使用這張地圖來尋找你附近的籃球場，或是尋找一場你想觀看的籃球比賽，然後去買票！
       `,
     link: [{
       name: 'demo',
@@ -197,6 +219,7 @@ You can use it to find basketball venues near you, or search a game!
   },
   {
     name: "StockIndicatorAnalyzer",
+    nameZh: "台股風向標",
     description:
       `
 StockIndicatorAnalyzer is a **Python project**
@@ -204,6 +227,10 @@ designed for analyzing stock market trends
 based on user-selected stocks and strategies.
 
 It is a part of my university coursework project.
+      `,
+    descriptionZh:
+      `
+台股風向標可以按照選定的策略與標的，自動估算出是否該買入、持有或是賣出手上的股票！
       `,
     link: [{
       name: 'demo',
@@ -214,10 +241,12 @@ It is a part of my university coursework project.
   },
   {
     name: "And More...",
+    nameZh: "還想看更多．．．？",
     description:
       `
-Follow my github for more projects!
+Follow my GitHub for more projects!
 `,
+    descriptionZh: "去我的 GitHub 看看吧！",
     link: [{
       name: 'github',
       url: "https://github.com/linyejoe2"
@@ -307,6 +336,7 @@ const TestBox = styled('div')(({ theme }) => ({
 
 const Item = (props: p2) => {
   // const Item = (props: {p, project: IProject}) => {
+  const { i18n } = useTranslation()
   return (
     <Box display="flex" flexDirection="column"
       boxShadow="2px 2px 5px 3px rgba(119,53,136,.459), -2px -2px 5px 3px rgba(119,53,136,.459)"
@@ -317,15 +347,15 @@ const Item = (props: p2) => {
       }} p={2}>
       {props.children}
       <Box>
-        <Box component="img" borderRadius='10px' width="100%" height='165px' src={props.project.preview ?? 'https://i.imgur.com/6ilYGnm.jpg'} alt="preview"></Box>
+        <Box component="img" borderRadius='10px' width="100%" height='165px' sx={{ objectFit: 'cover' }} src={props.project.preview ?? 'https://i.imgur.com/6ilYGnm.jpg'} alt="preview"></Box>
       </Box>
-      <h3 style={{ textAlign: "center", marginTop: "5px", marginBottom: "0" }}>{props.project.name}</h3>
+      <h3 style={{ textAlign: "center", marginTop: "5px", marginBottom: "0" }}>{i18n.language == "en" ? props.project.name : props.project.nameZh}</h3>
       <TestBox sx={{
         height: "100%",
-        // overflowY: "scroll",
+        overflowY: "scroll",
         "::-webkit-scrollbar": { width: '2px' },
       }}>
-        <ReactMarkdown className="markdown">{props.project.description}</ReactMarkdown>
+        <ReactMarkdown className="markdown">{i18n.language == "en" ? props.project.description : props.project.descriptionZh}</ReactMarkdown>
       </TestBox>
 
       {props.project.link ?

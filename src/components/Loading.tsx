@@ -49,7 +49,7 @@ export default function Loading() {
         sx={{
           color: '#fff',
           backgroundColor: "#0e021d",
-          zIndex: (theme) => theme.zIndex.drawer + 1
+          zIndex: (theme) => theme.zIndex.drawer + 2
         }}
         open={progress < 99}
       // onClick={handleClose}
