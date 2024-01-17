@@ -14,9 +14,11 @@ import { store, darkModeActions, TStore } from '../service/store';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { BASE } from "../service/CONST"
+import { useTranslation } from 'react-i18next'
 
 
-const pages = ['Home', 'About', 'Projects', 'Resume', 'Blogs'];
+// const pages = ['Home', 'About', 'Projects', 'Resume', 'Blogs'];
+const pages = ['Home', 'Projects', 'Blogs'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 interface Props {
@@ -24,6 +26,13 @@ interface Props {
 }
 
 export default function TopNavigationBar() {
+  const { t, i18n } = useTranslation()
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng)
+    // handleClose()
+    if (anchorElUser) setAnchorElUser(null)
+  }
+
   const [reloadKey, setReloadKey] = useState(0);
   const handleReload = () => {
     setReloadKey(reloadKey + 1);
@@ -137,7 +146,7 @@ export default function TopNavigationBar() {
                     }}
                   >
                     <Typography>
-                      {page}
+                      {t('topNav.' + page)}
                     </Typography>
                     {/* <span>
                   </span> */}
@@ -207,7 +216,7 @@ export default function TopNavigationBar() {
                     margin: "10px auto",
                     display: { xs: 'none', md: 'flex' },
                   }}>
-                    <Typography>Settings</Typography>
+                    <Typography>{t("topNav.Setting")}</Typography>
                   </Box>
                   <Box className="centerer " sx={{
                     margin: "20px auto",
@@ -218,7 +227,7 @@ export default function TopNavigationBar() {
                       display: { xs: 'block', md: 'none' }
                     }}>
 
-                    <Divider textAlign="left" sx={{ marginBottom: "10px" }}>Menu</Divider>
+                    <Divider textAlign="left" sx={{ marginBottom: "10px" }}>{t("topNav.Menu")}</Divider>
                     <div className="centerer mb1">
                       <ButtonGroup fullWidth orientation="vertical" aria-label="Menu button group">
                         {pages.map((page) => {
@@ -230,7 +239,7 @@ export default function TopNavigationBar() {
                               variant={window.location.href.indexOf(page.toLowerCase()) != -1 ? "contained" : "outlined"}
                             >
                               <Typography>
-                                {page}
+                                {t('topNav.' + page)}
                               </Typography>
                             </Button>
                           )
@@ -238,19 +247,19 @@ export default function TopNavigationBar() {
                       </ButtonGroup>
                     </div>
                   </Box>
-                  <Divider textAlign="left" sx={{ marginBottom: "10px" }}>Mode</Divider>
+                  <Divider textAlign="left" sx={{ marginBottom: "10px" }}>{t('topNav.Mode')}</Divider>
                   <div className="centerer mb1">
                     <ButtonGroup fullWidth variant="outlined" aria-label="Theme Mode change button group">
-                      <Button onClick={handleThemeButtonClick} variant={!darkTheme ? "contained" : "outlined"} id='Light'>Light</Button>
-                      <Button onClick={handleThemeButtonClick} variant={darkTheme ? "contained" : "outlined"} id='Dark'>Dark</Button>
+                      <Button onClick={handleThemeButtonClick} variant={!darkTheme ? "contained" : "outlined"} id='Light'>{t('topNav.Light')}</Button>
+                      <Button onClick={handleThemeButtonClick} variant={darkTheme ? "contained" : "outlined"} id='Dark'>{t('topNav.Dark')}</Button>
                     </ButtonGroup>
                   </div>
-                  <Divider textAlign="left" sx={{ marginBottom: "10px" }}>Langauge</Divider>
+                  <Divider textAlign="left" sx={{ marginBottom: "10px" }}>{t('topNav.Langauge')}</Divider>
                   <div className="centerer mb1">
                     <ButtonGroup fullWidth orientation="vertical"
                       variant="outlined" aria-label="outlined primary button group">
-                      <Button variant="contained">English</Button>
-                      <Button>TODO Traditional Chinese</Button>
+                      <Button variant={i18n.language == 'en' ? "contained" : "outlined"} onClick={() => changeLanguage('en')}>{t('topNav.English')}</Button>
+                      <Button variant={i18n.language == 'zh-TW' ? "contained" : "outlined"} onClick={() => changeLanguage('zh-TW')}>{t('topNav.Traditional Chinese')}</Button>
                     </ButtonGroup>
                   </div>
                 </Box>

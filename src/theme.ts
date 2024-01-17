@@ -13,7 +13,7 @@ import LibreFranklinTTF from "/font/LibreFranklin.ttf"
 
 const themeDefaultOption: ThemeOptions = {
   typography: {
-    fontFamily: ["LibreFranklin", 'Raleway', 'NotoSansTC', 'Jost',].join(",")
+    fontFamily: ["LibreFranklin", 'Raleway', 'Jost',].join(",")
     // fontFamily: ['Minecraft', 'VcrOsd', 'Paskowy', 'RainyHearts', 'Cubic',].join(",")
   },
   components: {
@@ -111,7 +111,8 @@ export const darkMode = createTheme({
       secondary: "#ba68c8",
     },
     primary: {
-      main: "#622e87"
+      main: "#622e87",
+      "800": "#8e24aa"
     },
     // primary: purple,
     secondary: deepPurple,
