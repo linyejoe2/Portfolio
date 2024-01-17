@@ -17,7 +17,8 @@ import { BASE } from "../service/CONST"
 import { useTranslation } from 'react-i18next'
 
 
-const pages = ['Home', 'About', 'Projects', 'Resume', 'Blogs'];
+// const pages = ['Home', 'About', 'Projects', 'Resume', 'Blogs'];
+const pages = ['Home', 'Projects', 'Blogs'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 interface Props {
