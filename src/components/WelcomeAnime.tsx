@@ -1,35 +1,7 @@
 import { useState } from 'react';
 import { Backdrop, Box, Button } from '@mui/material';
 
-// import styled, { keyframes } from 'styled-components';
 import i18n from '../i18n';
-
-// const rotateAndMove = keyframes`
-//   0% {
-//     transform: rotate(0deg) translateX(0%);
-//   }
-//   100% {
-//     transform: rotate(90deg) translateX(-300%);
-//   }
-// `;
-
-// const Container = styled.div`
-//   width: 100%;
-//   height: 100vh;
-//   display: flex;
-//   transition: transform 1s ease;
-//   animation: ${rotateAndMove} 3s forwards; /* 啟動動畫，並固定在最後的狀態 */
-// `;
-
-// const LeftSide = styled.div`
-//   width: 50%; /* 設定左半邊的寬度 */
-//   background-color: #f00; /* 左半邊的背景顏色 */
-// `;
-
-// const RightSide = styled.div`
-//   width: 50%; /* 設定右半邊的寬度 */
-//   background-color: #00f; /* 右半邊的背景顏色 */
-// `;
 
 export default function WelcomeAnime() {
   const [expanded, setExpanded] = useState(false);

@@ -17,7 +17,7 @@ export default function Home() {
   const { t, i18n } = useTranslation()
   return (<Container sx={{ paddingTop: "" }}>
     <Grid container spacing={2}>
-      <Grid xs={12} md={7} sx={{ paddingLeft: "62px", paddingTop: '80px', '@media (max-width: 900px)': { paddingTop: "100px", paddingRight: "0", paddingLeft: "100px" } }}>
+      <Grid xs={12} md={7} sx={{ paddingLeft: "62px", paddingTop: '80px', '@media (max-width: 900px)': { paddingTop: "100px", paddingRight: "0", paddingLeft: "62px" } }}>
         <h1>{t('main.banner.1')}</h1>
         <h1>{t('main.banner.2')}<HiLighter>{t('main.banner.3')}</HiLighter> </h1>
         {/* <Typography variant='h2'>
